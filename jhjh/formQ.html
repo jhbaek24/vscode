@@ -13,8 +13,8 @@
     </head>
     <body>
         <form action="boardwrite" method="post">
-        제목<input type="text" name="btitle"><br>
-        작성자<input type="text" name="bwriter"><br>
+        제목<input type="text" name="btitle" value="제목입니다" readonly><br>
+        작성자<input type="text" name="bwriter" placeholder="작성자쓰세요"><br>
         비밀번호<input type="password" name="bpassword"><br>
         내용<textarea name="bcontents" rows="10" cols="10"></textarea><br>
         카테고리<select name="bcategory">
@@ -24,7 +24,9 @@
             </select><br>
         전체공개여부<input type="radio" name="bopen" value="yes">예
             <input type="radio" name="bopen2" value="no">아니오<br>
-        <input type="submit" value="글작성">
+        <input type="submit" value="글작성"><br>
+        <!-- form태그 내에 있는 button태그는 submit역할을 함 -->
+        <button>글작성버튼</button>
         </form>
     </body>
 </html>
