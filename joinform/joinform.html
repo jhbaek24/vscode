@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function idcheck() {
+            var exp = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/;
+            var id = document.getElementById('id').value;
+            var result = document.getElementById('idcheck');
+            if(id.length==0){
+                result.style.color = 'red';
+                result.innerHTML = '필수입력정보입니다';
+            } else if(id.match(exp)){
+                result.style.color = 'green';
+                result.innerHTML = '유효한 id 형식입니다';
+            } else if(!id.match(exp)){
+                result.style.color = 'red';
+                result.innerHTML = '형식에 맞지 않습니다';
+            }
+        }
+
+        function pwdcheck() {
+            var pw = document.getElementById('pw').value;
+            var checkResult = document.getElementById('pw-check-result');
+            var exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!#$-])[a-zA-Z\d!#$-]{8,18}$/;
+            if(pw.length==0){
+                checkResult.style.color = 'red';
+                checkResult.innerHTML = '필수입력정보입니다.';
+            } else if(!pw.match(exp)){
+                checkResult.style.color = 'red';
+                checkResult.innerHTML = '형식에 맞지 않습니다';
+            } else {
+                checkResult.style.color = 'green';
+                checkResult.innerHTML = '유효한형식입니다.';
+            }
+        }
+        function pwdconfirm() {
+            var pw = document.getElementById('pw').value;
+            var pwConfirm = document.getElementById('pw-confirm').value;
+            var confirmResult = document.getElementById('pw-confirm-result');
+            if(pw == pwConfirm){
+                confirmResult.style.color = 'green';
+                confirmResult.innerHTML = '일치합니다';
+            } else {
+                confirmResult.style.color = 'red';
+                confirmResult.innerHTML = '일치하지 않습니다';
+            }
+        }
+
+        function namecheck(){
+            var name = document.getElementById('name').value;
+            var result = document.getElementById('namecheck');
+            if(name.length==0){
+                result.style.color = 'red';
+                result.innerHTML = '필수입력정보입니다';
+            }
+        }
+
+        function emailcheck(){
+            console.log('함수호출');
+            var ele = document.getElementById('id1').value;
+            var domainValue = document.getElementById('domain');
+            domainValue.value = ele;
+            document.getElementById('domain').value = ele;
+        }
+
+        function phonecheck() {
+            var exp = /^\d{3}-\d{4}-\d{4}$/;
+            var phone = document.getElementById('phone').value;
+            var result = document.getElementById('checkresult');
+            if(phone.match(exp)){
+                result.style.color = 'green';
+                result.innerHTML = '유효한형식';
+            } else if(phone.length==0){
+                result.style.color = 'red';
+                result.innerHTML = '필수입력정보입니다.';
+            }else {
+                result.style.color = 'red';
+                result.innerHTML = '유효하지 않은 전화번호 형식';
+            }
+        }
+    </script>
+    <style>
+        input {
+            width: 300px;
+        }
+        body {
+            background-color: grey;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    아이디: <input type="text" id="id" onblur="idcheck()" placeholder="영문소문자, 숫자, 6~10글자이내로 입력해주세요"><br>
+    <span id="idcheck"></span><br>
+    <button onclick="idcheck()">id정규식체크</button><br>
+
+    비밀번호: <input type="text" id="pw" onblur="pwdcheck()" placeholder="비밀번호를 입력하세요"><br>
+    <span id="pw-check-result"></span> <br>
+    비밀번호확인: <input type="text" id="pw-confirm" onblur="pwdconfirm()" placeholder="비밀번호를 한번 더 입력하세요"><br>
+    <span id="pw-confirm-result"></span><br>
+
+    이름: <input type="text" id="name" onblur="namecheck()" placeholder="이름을 입력하세요"><br>
+    <span id="namecheck"></span><br>
+
+    이메일 : <input type="text"> @ <input type="text" id="domain">
+    <select id="id1" onchange="emailcheck()">
+        <option value="">직접입력</option>
+        <option value="google.co.kr">google.co.kr</option>
+        <option value="naver.com">naver.com</option>
+        <option value="hanmail.net">hanmail.net</option>
+    </select><br>
+
+    전화번호: <input type="text" id="phone" onblur="phonecheck()" placeholder="세자리-네자리-네자리 숫자형식"><br>
+    <span id="checkresult"></span>
+</body>
+</html>
